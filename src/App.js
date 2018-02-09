@@ -9,8 +9,10 @@ class ExampleForm extends Component {
 			<Form>
 				{formApi => (
 					<form onSubmit={formApi.submitForm} id="form1">
-						<label htmlFor="hello">Hello World</label>
-						<Text field="hello" id="hello" />
+						<label htmlFor="name">Name: </label>
+						<Text field="name" id="name" />
+						<label htmlFor="lastName">Last Name: </label>
+						<Text field="lastName" id="lastName" />
 						<button type="submit">Submit</button>
 					</form>
 				)}
@@ -25,11 +27,7 @@ class App extends Component {
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to React</h1>
 				</header>
-				<p className="App-intro">
-					To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
 				<ExampleForm />
 			</div>
 		);
