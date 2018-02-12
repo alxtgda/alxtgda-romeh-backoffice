@@ -7,7 +7,7 @@ class NameForm extends Component {
 			<div>
 				<Form>
 					{formApi => (
-						<form onSubmit={formApi.submitForm} id="form1">
+						<form onSubmit={formApi.submitForm} id="nameForm">
 							<label htmlFor="name">Name: </label>
 							<Text field="name" id="name" />
 							<label htmlFor="lastName">Last Name: </label>
