@@ -1,48 +1,76 @@
 import React, { Component } from "react";
 
 class NameForm extends Component {
-	constructor(props) {
-		super(props);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+	constructor() {
+		super();
 		this.state = {
-			value: ""
+			inputName: "",
+			inputLastName: "",
+			inputTerms: false
 		};
 	}
-	handleChange(e) {
-		this.setState({
-			value: e.target.value
-		});
-	}
-	handleSubmit(e) {
-		alert("A name was submitted: " + this.state.value);
+	handleSubmit = e => {
 		e.preventDefault();
 		let dbCon = this.props.db.database().ref("/names");
 		dbCon.push({
-			name: this.state.value
+			name: this.state.inputName,
+			lastName: this.state.inputLastName,
+			accTerms: this.state.inputTerms
 		});
 		this.setState({
-			value: ""
+			inputName: "",
+			inputLastName: "",
+			inputTerms: false
 		});
+		console.log(this.state);
+	};
+	handleChange = (e) => {
+		this.setState({ inputTerms: e.target.checked });
 	}
+	
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div>
-					<div>
-						<label>{this.props.label}</label>
-					</div>
-					<input
-						name="firstName"
-						type="text"
-						placeholder="Escribe tu Nombre.."
-						onChange={this.handleChange}
-						value={this.state.value}
-					/>
-				</div>
-				<input type="submit" value="Submit" />
-			</form>
+			<div>
+				<h4>Datos Generales</h4>
+				<form onSubmit={this.handleSubmit}>
+					<p>
+						<label htmlFor="name">Nombre: </label>
+						<input
+							id="name"
+							name="userName"
+							onChange={e => this.setState({ inputName: e.target.value })}
+							placeholder="Introduce tu nombre"
+							value={this.state.inputName}
+						/>
+					</p>
+
+					<p>
+						<label htmlFor="lastName">Apellido Materno: </label>
+						<input
+							id="lastName"
+							name="lastName"
+							onChange={e => this.setState({ inputLastName: e.target.value })}
+							placeholder="Introduce tu Apellido Materno"
+							value={this.state.inputLastName}
+						/>
+					</p>
+
+					<p>
+						<label>
+							<input
+								checked={this.state.inputTerms}
+								onChange={this.handleChange}
+								type="checkbox"
+							/>
+							Accepted Terms
+						</label>
+					</p>
+
+					<button>Enviar..</button>
+				</form>
+			</div>
 		);
 	}
 }
+
 export default NameForm;
