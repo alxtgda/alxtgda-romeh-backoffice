@@ -6,7 +6,7 @@ class NameForm extends Component {
 		this.state = {
 			inputName: "",
 			inputLastName: "",
-			inputTerms: true
+			inputTerms: false
 		};
 	}
 	handleSubmit = e => {
@@ -18,15 +18,16 @@ class NameForm extends Component {
 			accTerms: this.state.inputTerms
 		});
 		this.setState({
-			value: ""
+			inputName: "",
+			inputLastName: "",
+			inputTerms: false
 		});
 		console.log(this.state);
 	};
-	handleChange(e) {
-		console.log("handleChange");
-		console.log(e.target.checked);
+	handleChange = (e) => {
 		this.setState({ inputTerms: e.target.checked });
 	}
+	
 	render() {
 		return (
 			<div>
