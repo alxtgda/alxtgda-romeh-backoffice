@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, FormGroup, FormControl, Col, Button } from "react-bootstrap";
 
 class NameForm extends Component {
 	constructor() {
@@ -24,50 +25,66 @@ class NameForm extends Component {
 		});
 		console.log(this.state);
 	};
-	handleChange = (e) => {
+	handleChange = e => {
 		this.setState({ inputTerms: e.target.checked });
-	}
-	
+	};
+
 	render() {
 		return (
 			<div>
 				<h4>Datos Generales</h4>
-				<form onSubmit={this.handleSubmit}>
-					<p>
-						<label htmlFor="name">Nombre: </label>
-						<input
-							id="name"
-							name="userName"
-							onChange={e => this.setState({ inputName: e.target.value })}
-							placeholder="Introduce tu nombre"
-							value={this.state.inputName}
-						/>
-					</p>
-
-					<p>
-						<label htmlFor="lastName">Apellido Materno: </label>
-						<input
-							id="lastName"
-							name="lastName"
-							onChange={e => this.setState({ inputLastName: e.target.value })}
-							placeholder="Introduce tu Apellido Materno"
-							value={this.state.inputLastName}
-						/>
-					</p>
-
-					<p>
-						<label>
-							<input
-								checked={this.state.inputTerms}
-								onChange={this.handleChange}
-								type="checkbox"
+				<Form horizontal onSubmit={this.handleSubmit}>
+					<FormGroup controlId="formHorizontalName">
+						<Col componentClass="name" sm={1}>
+							Nombre:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="name"
+								type="text"
+								onChange={e => this.setState({ inputName: e.target.value })}
+								placeholder="Tu Nombre.."
+								value={this.state.inputName}
 							/>
-							Accepted Terms
-						</label>
-					</p>
+						</Col>
+					</FormGroup>
 
-					<button>Enviar..</button>
-				</form>
+					<FormGroup controlId="formHorizontalLastName">
+						<Col componentClass="lastName" sm={1}>
+							Apellido:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="lastName"
+								type="text"
+								onChange={e => this.setState({ inputLastName: e.target.value })}
+								placeholder="Apellido Materno.."
+								value={this.state.inputLastName}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup>
+						<Col componentClass="accTerms" sm={1}>
+							Aceptas Términos y Condiciones..
+						</Col>
+						<Col sm={1}>
+							<FormControl
+								id="accTerms"
+								type="checkbox"
+								onChange={this.handleChange}
+								checked={this.state.inputTerms}
+								value={this.state.inputTerms}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup>
+						<Col smOffset={2} sm={10}>
+							<Button type="submit">Enviar..</Button>
+						</Col>
+					</FormGroup>
+				</Form>
 			</div>
 		);
 	}
