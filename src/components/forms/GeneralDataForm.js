@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Form, FormGroup, FormControl, Col, Button } from "react-bootstrap";
+import {
+	Form,
+	PageHeader,
+	FormGroup,
+	FormControl,
+	Col,
+	Button
+} from "react-bootstrap";
 
 class NameForm extends Component {
 	constructor() {
@@ -7,23 +14,28 @@ class NameForm extends Component {
 		this.state = {
 			inputName: "",
 			inputLastName: "",
+			inputUsrAddress: "",
+			inputEmailAddress: "",
 			inputTerms: false
 		};
 	}
 	handleSubmit = e => {
 		e.preventDefault();
-		let dbCon = this.props.db.database().ref("/names");
+		let dbCon = this.props.db.database().ref("/users");
 		dbCon.push({
 			name: this.state.inputName,
 			lastName: this.state.inputLastName,
+			usrAddress: this.state.inputUsrAddress,
+			usrEmail: this.state.inputEmailAddress,
 			accTerms: this.state.inputTerms
 		});
 		this.setState({
 			inputName: "",
 			inputLastName: "",
+			inputUsrAddress: "",
+			inputEmailAddress: "",
 			inputTerms: false
 		});
-		console.log(this.state);
 	};
 	handleChange = e => {
 		this.setState({ inputTerms: e.target.checked });
@@ -32,9 +44,11 @@ class NameForm extends Component {
 	render() {
 		return (
 			<div>
-				<h4>Datos Generales</h4>
+				<PageHeader className="App-header">
+					ROMEH <small>Datos Generales</small>
+				</PageHeader>
 				<Form horizontal onSubmit={this.handleSubmit}>
-					<FormGroup controlId="formHorizontalName">
+					<FormGroup controlId="name">
 						<Col componentClass="name" sm={1}>
 							Nombre:
 						</Col>
@@ -49,7 +63,7 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="formHorizontalLastName">
+					<FormGroup controlId="lastName">
 						<Col componentClass="lastName" sm={1}>
 							Apellido:
 						</Col>
@@ -58,15 +72,50 @@ class NameForm extends Component {
 								id="lastName"
 								type="text"
 								onChange={e => this.setState({ inputLastName: e.target.value })}
-								placeholder="Apellido Materno.."
+								placeholder="Apellido..."
 								value={this.state.inputLastName}
 							/>
 						</Col>
 					</FormGroup>
 
+					<FormGroup controlId="usrAddress">
+						<Col componentClass="usrAddress" sm={1}>
+							Domicilio:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="usrAddress"
+								type="textarea"
+								cols="50"
+								onChange={e =>
+									this.setState({ inputUsrAddress: e.target.value })
+								}
+								placeholder="Dirección Completa"
+								value={this.state.inputUsrAddress}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup controlId="usrEmail">
+						<Col componentClass="usrEmail" sm={1}>
+							Email:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="usrEmail"
+								type="email"
+								onChange={e =>
+									this.setState({ inputEmailAddress: e.target.value })
+								}
+								placeholder="email@mail.com"
+								value={this.state.inputEmailAddress}
+							/>
+						</Col>
+					</FormGroup>
+
 					<FormGroup>
-						<Col componentClass="accTerms" sm={1}>
-							Aceptas Términos y Condiciones..
+						<Col componentClass="accTerms" sm={3}>
+							Acepto Términos y Condiciones..
 						</Col>
 						<Col sm={1}>
 							<FormControl
@@ -80,8 +129,10 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Col smOffset={2} sm={10}>
-							<Button type="submit">Enviar..</Button>
+						<Col smOffset={1} sm={10}>
+							<Button type="submit" bsStyle="primary">
+								Enviar..
+							</Button>
 						</Col>
 					</FormGroup>
 				</Form>
