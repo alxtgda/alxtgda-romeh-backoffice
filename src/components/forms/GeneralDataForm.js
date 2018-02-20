@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SingleInput from "../elements/SingleInput";
 import {
 	Form,
 	PageHeader,
@@ -16,6 +17,8 @@ class NameForm extends Component {
 			inputLastName: "",
 			inputUsrAddress: "",
 			inputEmailAddress: "",
+			inputUsrProf: "",
+			inputUsrJob: "",
 			inputTerms: false
 		};
 	}
@@ -27,6 +30,8 @@ class NameForm extends Component {
 			lastName: this.state.inputLastName,
 			usrAddress: this.state.inputUsrAddress,
 			usrEmail: this.state.inputEmailAddress,
+			usrProf: this.state.inputUsrProf,
+			usrJob: this.state.inputUsrJob,
 			accTerms: this.state.inputTerms
 		});
 		this.setState({
@@ -34,6 +39,8 @@ class NameForm extends Component {
 			inputLastName: "",
 			inputUsrAddress: "",
 			inputEmailAddress: "",
+			inputUsrProf: "",
+			inputUsrJob: "",
 			inputTerms: false
 		});
 	};
@@ -78,6 +85,18 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
+					<FormGroup controlId="usrAge">
+						<Col componentClass="usrAge" sm={1}>
+							Edad:
+						</Col>
+						<Col sm={5}>
+							<FormControl componentClass="select" placeholder="Edad..">
+								<option value=" ">Selecciona tu Edad..</option>
+								<option value="1">10</option>
+								<option value="2">20</option>
+							</FormControl>
+						</Col>
+					</FormGroup>
 					<FormGroup controlId="usrAddress">
 						<Col componentClass="usrAddress" sm={1}>
 							Domicilio:
@@ -92,6 +111,36 @@ class NameForm extends Component {
 								}
 								placeholder="Dirección Completa"
 								value={this.state.inputUsrAddress}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup controlId="usrProf">
+						<Col componentClass="usrProf" sm={1}>
+							Profesión:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="usrProf"
+								type="text"
+								onChange={e => this.setState({ inputUsrProf: e.target.value })}
+								placeholder="Profesión.."
+								value={this.state.inputUsrProf}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup controlId="usrJob">
+						<Col componentClass="usrJob" sm={1}>
+							Ocupación:
+						</Col>
+						<Col sm={5}>
+							<FormControl
+								id="usrJob"
+								type="text"
+								onChange={e => this.setState({ inputUsrJob: e.target.value })}
+								placeholder="Ocupación.."
+								value={this.state.inputUsrJob}
 							/>
 						</Col>
 					</FormGroup>
@@ -125,6 +174,15 @@ class NameForm extends Component {
 								checked={this.state.inputTerms}
 								value={this.state.inputTerms}
 							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup controlId="pruebaCompo">
+						<Col componentClass="pruebaCompo" sm={3}>
+							Pro
+						</Col>
+						<Col sm={5}>
+							<SingleInput type="number" />
 						</Col>
 					</FormGroup>
 
