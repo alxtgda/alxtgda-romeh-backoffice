@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SingleInput from "../elements/SingleInput";
+//import SingleInput from "../elements/SingleInput";
 import {
 	Form,
 	PageHeader,
@@ -19,6 +19,7 @@ class NameForm extends Component {
 			inputEmailAddress: "",
 			inputUsrProf: "",
 			inputUsrJob: "",
+			selectUsrAge: " ",
 			inputTerms: false
 		};
 	}
@@ -32,6 +33,7 @@ class NameForm extends Component {
 			usrEmail: this.state.inputEmailAddress,
 			usrProf: this.state.inputUsrProf,
 			usrJob: this.state.inputUsrJob,
+			usrAge: this.state.selectUsrAge,
 			accTerms: this.state.inputTerms
 		});
 		this.setState({
@@ -41,11 +43,16 @@ class NameForm extends Component {
 			inputEmailAddress: "",
 			inputUsrProf: "",
 			inputUsrJob: "",
-			inputTerms: false
+			selectUsrAge: "",
+			inputTerms: false,
+			inputPrueba: ""
 		});
 	};
 	handleChange = e => {
-		this.setState({ inputTerms: e.target.checked });
+		this.setState({
+			inputTerms: e.target.checked,
+			selectUsrAge: e.target.value
+		});
 	};
 
 	render() {
@@ -90,10 +97,19 @@ class NameForm extends Component {
 							Edad:
 						</Col>
 						<Col sm={5}>
-							<FormControl componentClass="select" placeholder="Edad..">
-								<option value=" ">Selecciona tu Edad..</option>
-								<option value="1">10</option>
-								<option value="2">20</option>
+							<FormControl
+								id="usrAge"
+								componentClass="select"
+								placeholder="Edad.."
+								value={this.state.value}
+								onChange={e => this.setState({ selectUsrAge: e.target.value })}
+							>
+								<option selected value=" ">
+									Selecciona tu Edad..
+								</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+								<option value="20">20</option>
 							</FormControl>
 						</Col>
 					</FormGroup>
@@ -174,15 +190,6 @@ class NameForm extends Component {
 								checked={this.state.inputTerms}
 								value={this.state.inputTerms}
 							/>
-						</Col>
-					</FormGroup>
-
-					<FormGroup controlId="pruebaCompo">
-						<Col componentClass="pruebaCompo" sm={3}>
-							Pro
-						</Col>
-						<Col sm={5}>
-							<SingleInput type="number" />
 						</Col>
 					</FormGroup>
 
