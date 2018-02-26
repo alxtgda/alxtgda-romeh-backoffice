@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import SingleInput from "../elements/SingleInput";
+
 import {
 	Form,
 	PageHeader,
@@ -19,7 +19,7 @@ class NameForm extends Component {
 			inputEmailAddress: "",
 			inputUsrProf: "",
 			inputUsrJob: "",
-			selectUsrAge: " ",
+			selectUsrAge: "",
 			inputTerms: false
 		};
 	}
@@ -43,15 +43,14 @@ class NameForm extends Component {
 			inputEmailAddress: "",
 			inputUsrProf: "",
 			inputUsrJob: "",
-			selectUsrAge: "",
+			selectUsrAge: " ",
 			inputTerms: false,
 			inputPrueba: ""
 		});
 	};
 	handleChange = e => {
 		this.setState({
-			inputTerms: e.target.checked,
-			selectUsrAge: e.target.value
+			inputTerms: e.target.checked
 		});
 	};
 
@@ -179,12 +178,12 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Col componentClass="accTerms" sm={3}>
+						<Col componentClass="AccTerms" sm={3}>
 							Acepto Términos y Condiciones..
 						</Col>
 						<Col sm={1}>
 							<FormControl
-								id="accTerms"
+								id="AccTerms"
 								type="checkbox"
 								onChange={this.handleChange}
 								checked={this.state.inputTerms}
