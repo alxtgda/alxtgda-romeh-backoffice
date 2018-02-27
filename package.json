@@ -6,6 +6,7 @@
 		"firebase": "^4.9.1",
 		"react": "^16.2.0",
 		"react-bootstrap": "^0.32.1",
+		"react-bootstrap-maskedinput": "^0.4.0",
 		"react-bootstrap-validation": "^0.1.11",
 		"react-dom": "^16.2.0",
 		"react-form": "^2.16.2",
