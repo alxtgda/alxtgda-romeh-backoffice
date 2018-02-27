@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import {
+	Alert,
 	Form,
 	PageHeader,
 	FormGroup,
@@ -8,6 +9,7 @@ import {
 	Col,
 	Button
 } from "react-bootstrap";
+import MaskedFormControl from "react-bootstrap-maskedinput";
 
 class NameForm extends Component {
 	constructor() {
@@ -34,6 +36,7 @@ class NameForm extends Component {
 			usrProf: this.state.inputUsrProf,
 			usrJob: this.state.inputUsrJob,
 			usrAge: this.state.selectUsrAge,
+			cellNumber: this.state.cellNumber,
 			accTerms: this.state.inputTerms
 		});
 		this.setState({
@@ -44,6 +47,7 @@ class NameForm extends Component {
 			inputUsrProf: "",
 			inputUsrJob: "",
 			selectUsrAge: " ",
+			cellNumber: "",
 			inputTerms: false,
 			inputPrueba: ""
 		});
@@ -60,9 +64,29 @@ class NameForm extends Component {
 				<PageHeader className="App-header">
 					ROMEH <small>Datos Generales</small>
 				</PageHeader>
+				<Alert bsStyle="warning">
+					Deberás contestar cada una de las preguntas de manera específica y
+					completa. Entre más específico seas contestando cada uno de los campos
+					solicitados, tu programa personalizado se elaborará con mucho más
+					exactitud, ya que conoceré tus actividades y gustos a detalle. De esta
+					manera, el resultado es el mismo que como si tuvieras una consulta de
+					forma presencial. Una vez que hayas contestado debidamente la historia
+					clínica, deberás mandármela a mi correo: asesorias@romeh.mx A partir
+					de la fecha en que enviaste todos los requisitos, te enviaré tu plan
+					personalizado de dos a cinco días hábiles. Junto con este, adjuntare
+					las recomendaciones generales, así como la guía de ejercicios
+					completa, con la descripción de cada uno de los ejercicios en tu plan
+					de entrenamiento y cómo ejecutarlo. Instrucciones: Al contestar este
+					cuestionario tendré la información necesaria para poder evaluar tu
+					condición actual, fijar una meta alcanzable y diseñar un plan integral
+					personalizado que permitirá que logres tus objetivos. Te recomiendo
+					ser lo más específico posible, detallándome muy bien tu estilo de
+					vida; para conocer a fondo tus hábitos, actividades diarias y logros
+					que deseas alcanzar.
+				</Alert>
 				<Form horizontal onSubmit={this.handleSubmit}>
 					<FormGroup controlId="name">
-						<Col componentClass="name" sm={1}>
+						<Col componentClass="name" sm={2}>
 							Nombre:
 						</Col>
 						<Col sm={5}>
@@ -77,7 +101,7 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup controlId="lastName">
-						<Col componentClass="lastName" sm={1}>
+						<Col componentClass="lastName" sm={2}>
 							Apellido:
 						</Col>
 						<Col sm={5}>
@@ -92,7 +116,7 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup controlId="usrAge">
-						<Col componentClass="usrAge" sm={1}>
+						<Col componentClass="usrAge" sm={2}>
 							Edad:
 						</Col>
 						<Col sm={5}>
@@ -113,7 +137,7 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 					<FormGroup controlId="usrAddress">
-						<Col componentClass="usrAddress" sm={1}>
+						<Col componentClass="usrAddress" sm={2}>
 							Domicilio:
 						</Col>
 						<Col sm={5}>
@@ -131,7 +155,7 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup controlId="usrProf">
-						<Col componentClass="usrProf" sm={1}>
+						<Col componentClass="usrProf" sm={2}>
 							Profesión:
 						</Col>
 						<Col sm={5}>
@@ -146,7 +170,7 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup controlId="usrJob">
-						<Col componentClass="usrJob" sm={1}>
+						<Col componentClass="usrJob" sm={2}>
 							Ocupación:
 						</Col>
 						<Col sm={5}>
@@ -161,7 +185,7 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup controlId="usrEmail">
-						<Col componentClass="usrEmail" sm={1}>
+						<Col componentClass="usrEmail" sm={2}>
 							Email:
 						</Col>
 						<Col sm={5}>
@@ -178,10 +202,24 @@ class NameForm extends Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Col componentClass="AccTerms" sm={3}>
+						<Col componentClass="CellNumber" sm={2}>
+							Celular (WhatsApp):
+						</Col>
+						<Col sm={5}>
+							<MaskedFormControl
+								type="text"
+								id="cellNumber"
+								mask="(11) 1111 1111"
+								onChange={e => this.setState({ cellNumber: e.target.value })}
+							/>
+						</Col>
+					</FormGroup>
+
+					<FormGroup>
+						<Col componentClass="AccTerms" sm={2}>
 							Acepto Términos y Condiciones..
 						</Col>
-						<Col sm={1}>
+						<Col sm={2}>
 							<FormControl
 								id="AccTerms"
 								type="checkbox"
