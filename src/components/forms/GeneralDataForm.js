@@ -52,6 +52,7 @@ class NameForm extends Component {
 			inputTerms: false,
 			inputPrueba: ""
 		});
+		alert("Datos Guardados..");
 	};
 	handleKeyDown(e) {
 		if (e.keyCode === 13) {
@@ -65,7 +66,7 @@ class NameForm extends Component {
 	};
 	getValidationState(value) {
 		const length = value.length;
-		if (length > 0) return "warning";
+		if (length > 0 && length <= 5) return "warning";
 		else if (length > 5) return "success";
 		else if (length === 0) return "error";
 		return null;

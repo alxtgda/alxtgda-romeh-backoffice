@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NameForm from "./components/forms/GeneralDataForm";
+import HeredoFamForm from "./components/forms/HeredoFamForm";
 import "./App.css";
 import firebase from "firebase";
 
@@ -18,8 +19,15 @@ class App extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<NameForm db={firebase} label="Nombre: " />
+			<div className="container">
+				<div className="row">
+					<div className="col-sm-12">
+						<NameForm db={firebase} label="Nombre: " />
+					</div>
+					<div className="col-sm-12">
+						<HeredoFamForm />
+					</div>
+				</div>
 			</div>
 		);
 	}
