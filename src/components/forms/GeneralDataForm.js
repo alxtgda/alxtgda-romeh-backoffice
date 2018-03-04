@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import {
-	Alert,
 	Form,
 	PageHeader,
 	FormGroup,
@@ -9,11 +8,12 @@ import {
 	Col,
 	Button
 } from "react-bootstrap";
+import SectionHeader from "../elements/SectionHeader";
 import MaskedFormControl from "react-bootstrap-maskedinput";
 
 class NameForm extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			inputName: "",
 			inputLastName: "",
@@ -59,7 +59,7 @@ class NameForm extends Component {
 			e.preventDefault();
 		}
 	}
-	handleChange = e => {
+	onChange = e => {
 		this.setState({
 			inputTerms: e.target.checked
 		});
@@ -78,24 +78,9 @@ class NameForm extends Component {
 				<PageHeader className="App-header">
 					ROMEH <small>Datos Generales</small>
 				</PageHeader>
-				<Alert bsStyle="warning">
-					Deberás contestar cada una de las preguntas de manera específica y
-					completa. Entre más específico seas contestando cada uno de los campos
-					solicitados, tu programa personalizado se elaborará con mucho más
-					exactitud, ya que conoceré tus actividades y gustos a detalle. De esta
-					manera, el resultado es el mismo que como si tuvieras una consulta de
-					forma presencial. A partir de la fecha en que enviaste todos los
-					requisitos, te enviaré tu plan personalizado de dos a cinco días
-					hábiles. Junto con este, adjuntare las recomendaciones generales, así
-					como la guía de ejercicios completa, con la descripción de cada uno de
-					los ejercicios en tu plan de entrenamiento y cómo ejecutarlo.
-					Instrucciones: Al contestar este cuestionario tendré la información
-					necesaria para poder evaluar tu condición actual, fijar una meta
-					alcanzable y diseñar un plan integral personalizado que permitirá que
-					logres tus objetivos. Te recomiendo ser lo más específico posible,
-					detallándome muy bien tu estilo de vida; para conocer a fondo tus
-					hábitos, actividades diarias y logros que deseas alcanzar.
-				</Alert>
+
+				<SectionHeader />
+
 				<Form
 					horizontal
 					onSubmit={this.handleSubmit}
@@ -250,7 +235,7 @@ class NameForm extends Component {
 							<FormControl
 								id="AccTerms"
 								type="checkbox"
-								onChange={this.handleChange}
+								onChange={this.onChange}
 								checked={this.state.inputTerms}
 								value={this.state.inputTerms}
 							/>

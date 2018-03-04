@@ -34,7 +34,7 @@ class HeredoFam extends Component {
 								<td>
 									<Checkbox
 										id="sobrepesoPadre"
-										onChange={this.handleChange}
+										onChange={this.handleChange.bind(this)}
 										checked={this.state.sobrepesoPadre}
 										value={this.state.sobrepesoPadre}
 									/>
@@ -42,7 +42,7 @@ class HeredoFam extends Component {
 								<td>
 									<Checkbox
 										id="sobrepesoMadre"
-										onChange={this.handleChange}
+										onChange={this.handleChange.bind(this)}
 										checked={this.state.sobrepesoMadre}
 										value={this.state.sobrepesoMadre}
 									/>
