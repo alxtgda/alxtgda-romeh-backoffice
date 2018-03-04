@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import {
-	Alert,
 	Form,
 	PageHeader,
 	FormGroup,
@@ -9,11 +8,12 @@ import {
 	Col,
 	Button
 } from "react-bootstrap";
+import SectionHeader from "../elements/SectionHeader";
 import MaskedFormControl from "react-bootstrap-maskedinput";
 
 class NameForm extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			inputName: "",
 			inputLastName: "",
@@ -22,6 +22,7 @@ class NameForm extends Component {
 			inputUsrProf: "",
 			inputUsrJob: "",
 			selectUsrAge: "",
+			cellNumber: "",
 			inputTerms: false
 		};
 	}
@@ -51,12 +52,25 @@ class NameForm extends Component {
 			inputTerms: false,
 			inputPrueba: ""
 		});
+		alert("Datos Guardados..");
 	};
-	handleChange = e => {
+	handleKeyDown(e) {
+		if (e.keyCode === 13) {
+			e.preventDefault();
+		}
+	}
+	onChange = e => {
 		this.setState({
 			inputTerms: e.target.checked
 		});
 	};
+	getValidationState(value) {
+		const length = value.length;
+		if (length > 0 && length <= 5) return "warning";
+		else if (length > 5) return "success";
+		else if (length === 0) return "error";
+		return null;
+	}
 
 	render() {
 		return (
@@ -64,28 +78,18 @@ class NameForm extends Component {
 				<PageHeader className="App-header">
 					ROMEH <small>Datos Generales</small>
 				</PageHeader>
-				<Alert bsStyle="warning">
-					Deberás contestar cada una de las preguntas de manera específica y
-					completa. Entre más específico seas contestando cada uno de los campos
-					solicitados, tu programa personalizado se elaborará con mucho más
-					exactitud, ya que conoceré tus actividades y gustos a detalle. De esta
-					manera, el resultado es el mismo que como si tuvieras una consulta de
-					forma presencial. Una vez que hayas contestado debidamente la historia
-					clínica, deberás mandármela a mi correo: asesorias@romeh.mx A partir
-					de la fecha en que enviaste todos los requisitos, te enviaré tu plan
-					personalizado de dos a cinco días hábiles. Junto con este, adjuntare
-					las recomendaciones generales, así como la guía de ejercicios
-					completa, con la descripción de cada uno de los ejercicios en tu plan
-					de entrenamiento y cómo ejecutarlo. Instrucciones: Al contestar este
-					cuestionario tendré la información necesaria para poder evaluar tu
-					condición actual, fijar una meta alcanzable y diseñar un plan integral
-					personalizado que permitirá que logres tus objetivos. Te recomiendo
-					ser lo más específico posible, detallándome muy bien tu estilo de
-					vida; para conocer a fondo tus hábitos, actividades diarias y logros
-					que deseas alcanzar.
-				</Alert>
-				<Form horizontal onSubmit={this.handleSubmit}>
-					<FormGroup controlId="name">
+
+				<SectionHeader />
+
+				<Form
+					horizontal
+					onSubmit={this.handleSubmit}
+					onKeyDown={this.handleKeyDown}
+				>
+					<FormGroup
+						controlId="name"
+						validationState={this.getValidationState(this.state.inputName)}
+					>
 						<Col componentClass="name" sm={2}>
 							Nombre:
 						</Col>
@@ -97,10 +101,14 @@ class NameForm extends Component {
 								placeholder="Tu Nombre.."
 								value={this.state.inputName}
 							/>
+							<FormControl.Feedback />
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="lastName">
+					<FormGroup
+						controlId="lastName"
+						validationState={this.getValidationState(this.state.inputName)}
+					>
 						<Col componentClass="lastName" sm={2}>
 							Apellido:
 						</Col>
@@ -112,6 +120,7 @@ class NameForm extends Component {
 								placeholder="Apellido..."
 								value={this.state.inputLastName}
 							/>
+							<FormControl.Feedback />
 						</Col>
 					</FormGroup>
 
@@ -136,7 +145,10 @@ class NameForm extends Component {
 							</FormControl>
 						</Col>
 					</FormGroup>
-					<FormGroup controlId="usrAddress">
+					<FormGroup
+						controlId="usrAddress"
+						validationState={this.getValidationState(this.state.inputName)}
+					>
 						<Col componentClass="usrAddress" sm={2}>
 							Domicilio:
 						</Col>
@@ -201,8 +213,8 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup>
-						<Col componentClass="CellNumber" sm={2}>
+					<FormGroup controlId="cellNumber">
+						<Col componentClass="cellNumber" sm={2}>
 							Celular (WhatsApp):
 						</Col>
 						<Col sm={5}>
@@ -223,7 +235,7 @@ class NameForm extends Component {
 							<FormControl
 								id="AccTerms"
 								type="checkbox"
-								onChange={this.handleChange}
+								onChange={this.onChange}
 								checked={this.state.inputTerms}
 								value={this.state.inputTerms}
 							/>
@@ -233,7 +245,7 @@ class NameForm extends Component {
 					<FormGroup>
 						<Col smOffset={1} sm={10}>
 							<Button type="submit" bsStyle="primary">
-								Enviar..
+								Siguiente ->
 							</Button>
 						</Col>
 					</FormGroup>
