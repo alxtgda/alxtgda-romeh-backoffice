@@ -6,17 +6,48 @@ class HeredoFam extends Component {
 		super();
 		this.state = {
 			sobrepesoPadre: false,
-			sobrepesoMadre: false
+			sobrepesoMadre: false,
+			sobrepesoHermanos: false,
+			sobrepesoAbuelos: false,
+			diabetesPadre: false,
+			diabetesMadre: false,
+			diabetesHermanos: false,
+			diabetesAbuelos: false,
+			hipertensPadre: false,
+			hipertensMadre: false,
+			hipertensHermanos: false,
+			hipertensAbuelos: false,
+			cardioPadre: false,
+			cardioMadre: false,
+			cardioHermanos: false,
+			cardioAbuelos: false
 		};
 	}
 	handleChange = e => {
-		this.setState({
-			sobrepesoPadre: e.target.checked,
-			sobrepesoMadre: e.target.checked
-		});
+		const state = this.state;
+		state[e.target.name] = e.target.checked;
+		this.setState(state);
 	};
 
 	render() {
+		const {
+			sobrepesoPadre,
+			sobrepesoMadre,
+			sobrepesoHermanos,
+			sobrepesoAbuelos,
+			diabetesPadre,
+			diabetesMadre,
+			diabetesHermanos,
+			diabetesAbuelos,
+			hipertensPadre,
+			hipertensMadre,
+			hipertensHermanos,
+			hipertensAbuelos,
+			cardioPadre,
+			cardioMadre,
+			cardioHermanos,
+			cardioAbuelos
+		} = this.state;
 		return (
 			<div>
 				<FormGroup>
@@ -33,70 +64,140 @@ class HeredoFam extends Component {
 								<th>Sobrepeso</th>
 								<td>
 									<Checkbox
-										id="sobrepesoPadre"
-										onChange={this.handleChange.bind(this)}
-										checked={this.state.sobrepesoPadre}
-										value={this.state.sobrepesoPadre}
+										name="sobrepesoPadre"
+										value={sobrepesoPadre}
+										onChange={this.handleChange}
+										checked={sobrepesoPadre}
 									/>
 								</td>
 								<td>
 									<Checkbox
-										id="sobrepesoMadre"
-										onChange={this.handleChange.bind(this)}
-										checked={this.state.sobrepesoMadre}
-										value={this.state.sobrepesoMadre}
+										name="sobrepesoMadre"
+										value={sobrepesoMadre}
+										onChange={this.handleChange}
+										checked={sobrepesoMadre}
 									/>
 								</td>
 								<td>
-									<Checkbox />
+									<Checkbox
+										name="sobrepesoHermanos"
+										value={sobrepesoHermanos}
+										onChange={this.handleChange}
+										checked={sobrepesoHermanos}
+									/>
 								</td>
 								<td>
-									<Checkbox />
+									<Checkbox
+										name="sobrepesoAbuelos"
+										value={sobrepesoAbuelos}
+										onChange={this.handleChange}
+										checked={sobrepesoAbuelos}
+									/>
 								</td>
 							</tr>
 							<tr>
 								<th>Diabetes</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="diabetesPadre"
+										value={diabetesPadre}
+										onChange={this.handleChange}
+										checked={diabetesPadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="diabetesMadre"
+										value={diabetesMadre}
+										onChange={this.handleChange}
+										checked={diabetesMadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="diabetesHermanos"
+										value={diabetesHermanos}
+										onChange={this.handleChange}
+										checked={diabetesHermanos}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="diabetesAbuelos"
+										value={diabetesAbuelos}
+										onChange={this.handleChange}
+										checked={diabetesAbuelos}
+									/>
 								</th>
 							</tr>
 							<tr>
 								<th>Hipertensión</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="hipertensPadre"
+										value={hipertensPadre}
+										onChange={this.handleChange}
+										checked={hipertensPadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="hipertensMadre"
+										value={hipertensMadre}
+										onChange={this.handleChange}
+										checked={hipertensMadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="hipertensHermanos"
+										value={hipertensHermanos}
+										onChange={this.handleChange}
+										checked={hipertensHermanos}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="hipertensAbuelos"
+										value={hipertensAbuelos}
+										onChange={this.handleChange}
+										checked={hipertensAbuelos}
+									/>
 								</th>
 							</tr>
 							<tr>
 								<th>Enfermedades Cardiovasculares</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="cardioPadre"
+										value={cardioPadre}
+										onChange={this.handleChange}
+										checked={cardioPadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="cardioMadre"
+										value={cardioMadre}
+										onChange={this.handleChange}
+										checked={cardioMadre}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="cardioHermanos"
+										value={cardioHermanos}
+										onChange={this.handleChange}
+										checked={cardioHermanos}
+									/>
 								</th>
 								<th>
-									<Checkbox />
+									<Checkbox
+										name="cardioAbuelos"
+										value={cardioAbuelos}
+										onChange={this.handleChange}
+										checked={cardioAbuelos}
+									/>
 								</th>
 							</tr>
 						</tbody>
