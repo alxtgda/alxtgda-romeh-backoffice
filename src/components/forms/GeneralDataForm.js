@@ -9,8 +9,23 @@ import {
 	Button
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
+import PreguntaAbierta from "../elements/PreguntaAbierta";
 import MaskedFormControl from "react-bootstrap-maskedinput";
 
+const preguntas = {
+	p1:
+		"¿Padece alguna enfermedad, toma algún medicamento prescrito por su médico?, en caso de ser su respuesta afirmativa mencionar cuál es y la razón de usarlo.",
+	p2:
+		"¿Padece algún síntoma gastrointestinal como agruras, gastritis, reflujo, colitis, estreñimiento?",
+	p3:
+		"¿Ha tenido alguna lesión en músculos o articulaciones?, en caso de que su respuesta sea si, ¿fue tratada de manera correcta por el especialista? ¿Tiene alguna recomendación actual del médico tratante?",
+	p4:
+		"¿Acostumbra Fumar? En caso de ser su respuesta afirmativa mencionar cantidad a la semana.",
+	p5:
+		"¿Acostumbra tomar bebidas alcohólicas? En caso de ser su respuesta afirmativa mencionar cantidad a la semana.",
+	p6:
+		"¿Has usado o usas cualquier tipo de suplementos alimenticios (ejemplo: vitaminas,omega3, proteína, aminoácidos, etc.)?"
+};
 class NameForm extends Component {
 	constructor(props) {
 		super(props);
@@ -240,6 +255,42 @@ class NameForm extends Component {
 								value={this.state.inputTerms}
 							/>
 						</Col>
+					</FormGroup>
+					<FormGroup controlId="antecedentesPatologicos">
+						<strong>Antecedentes Patológicos</strong>
+						<PreguntaAbierta
+							id="firstQuestionPat"
+							label={preguntas.p1}
+							placeholder="Escribe tu Respuesta..."
+						/>
+						<PreguntaAbierta
+							id="secondQuestionPat"
+							label={preguntas.p2}
+							placeholder="Escribe tu Respuesta..."
+						/>
+						<PreguntaAbierta
+							id="thirdQuestionPat"
+							label={preguntas.p3}
+							placeholder="Escribe tu Respuesta..."
+						/>
+					</FormGroup>
+					<FormGroup controlId="antecedentesNoPatologicos">
+						<strong>Antecedentes No Patológicos</strong>
+						<PreguntaAbierta
+							id="firstQuestionNp"
+							label={preguntas.p4}
+							placeholder="Escribe tu Respuesta..."
+						/>
+						<PreguntaAbierta
+							id="secondQuestionNp"
+							label={preguntas.p5}
+							placeholder="Escribe tu Respuesta..."
+						/>
+						<PreguntaAbierta
+							id="thirdQuestionNp"
+							label={preguntas.p6}
+							placeholder="Escribe tu Respuesta..."
+						/>
 					</FormGroup>
 
 					<FormGroup>
