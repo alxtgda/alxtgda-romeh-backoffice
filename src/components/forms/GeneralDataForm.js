@@ -83,7 +83,7 @@ class NameForm extends Component {
 		const length = value.length;
 		if (length > 0 && length <= 5) return "warning";
 		else if (length > 5) return "success";
-		else if (length === 0) return "error";
+		else if (length > 0) return "error";
 		return null;
 	}
 
@@ -122,7 +122,7 @@ class NameForm extends Component {
 
 					<FormGroup
 						controlId="lastName"
-						validationState={this.getValidationState(this.state.inputName)}
+						validationState={this.getValidationState(this.state.inputLastName)}
 					>
 						<Col componentClass="lastName" sm={2}>
 							Apellido:
@@ -162,7 +162,9 @@ class NameForm extends Component {
 					</FormGroup>
 					<FormGroup
 						controlId="usrAddress"
-						validationState={this.getValidationState(this.state.inputName)}
+						validationState={this.getValidationState(
+							this.state.inputUsrAddress
+						)}
 					>
 						<Col componentClass="usrAddress" sm={2}>
 							Domicilio:
@@ -181,7 +183,10 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="usrProf">
+					<FormGroup
+						controlId="usrProf"
+						validationState={this.getValidationState(this.state.inputUsrProf)}
+					>
 						<Col componentClass="usrProf" sm={2}>
 							Profesión:
 						</Col>
@@ -196,7 +201,10 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="usrJob">
+					<FormGroup
+						controlId="usrJob"
+						validationState={this.getValidationState(this.state.inputUsrJob)}
+					>
 						<Col componentClass="usrJob" sm={2}>
 							Ocupación:
 						</Col>
@@ -211,7 +219,12 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="usrEmail">
+					<FormGroup
+						controlId="usrEmail"
+						validationState={this.getValidationState(
+							this.state.inputEmailAddress
+						)}
+					>
 						<Col componentClass="usrEmail" sm={2}>
 							Email:
 						</Col>
@@ -228,7 +241,10 @@ class NameForm extends Component {
 						</Col>
 					</FormGroup>
 
-					<FormGroup controlId="cellNumber">
+					<FormGroup
+						controlId="cellNumber"
+						validationState={this.getValidationState(this.state.cellNumber)}
+					>
 						<Col componentClass="cellNumber" sm={2}>
 							Celular (WhatsApp):
 						</Col>
