@@ -11,7 +11,6 @@ import {
 	Navbar
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
-import PreguntaAbierta from "../elements/PreguntaAbierta";
 import MaskedFormControl from "react-bootstrap-maskedinput";
 
 const questions = {
