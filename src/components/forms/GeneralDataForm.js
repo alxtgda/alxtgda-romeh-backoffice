@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 
 import {
+	ControlLabel,
 	Form,
 	PageHeader,
 	FormGroup,
 	FormControl,
 	Col,
-	Button
+	Button,
+	Navbar
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
 import PreguntaAbierta from "../elements/PreguntaAbierta";
 import MaskedFormControl from "react-bootstrap-maskedinput";
 
-const preguntas = {
+const questions = {
 	p1:
 		"¿Padece alguna enfermedad, toma algún medicamento prescrito por su médico?, en caso de ser su respuesta afirmativa mencionar cuál es y la razón de usarlo.",
 	p2:
@@ -38,7 +40,13 @@ class NameForm extends Component {
 			inputUsrJob: "",
 			selectUsrAge: "",
 			cellNumber: "",
-			inputTerms: false
+			inputTerms: false,
+			firstQuestionPat: "",
+			secondQuestionPat: "",
+			thirdQuestionPat: "",
+			firstQuestionNp: "",
+			secondQuestionNp: "",
+			thirdQuestionNp: ""
 		};
 	}
 	handleSubmit = e => {
@@ -53,7 +61,13 @@ class NameForm extends Component {
 			usrJob: this.state.inputUsrJob,
 			usrAge: this.state.selectUsrAge,
 			cellNumber: this.state.cellNumber,
-			accTerms: this.state.inputTerms
+			accTerms: this.state.inputTerms,
+			firstQuestionPat: this.state.firstQuestionPat,
+			secondQuestionPat: this.state.secondQuestionPat,
+			thirdQuestionPat: this.state.thirdQuestionPat,
+			firstQuestionNp: this.state.firstQuestionNp,
+			secondQuestionNp: this.state.secondQuestionNp,
+			thirdQuestionNp: this.state.thirdQuestionNp
 		});
 		this.setState({
 			inputName: "",
@@ -65,7 +79,12 @@ class NameForm extends Component {
 			selectUsrAge: " ",
 			cellNumber: "",
 			inputTerms: false,
-			inputPrueba: ""
+			firstQuestionPat: "",
+			secondQuestionPat: "",
+			thirdQuestionPat: "",
+			firstQuestionNp: "",
+			secondQuestionNp: "",
+			thirdQuestionNP: ""
 		});
 		alert("Datos Guardados..");
 	};
@@ -81,7 +100,7 @@ class NameForm extends Component {
 	};
 	getValidationState(value) {
 		const length = value.length;
-		if (length > 0 && length <= 5) return "warning";
+		if (length > 0 && length <= 2) return "warning";
 		else if (length > 5) return "success";
 		else if (length > 0) return "error";
 		return null;
@@ -272,39 +291,79 @@ class NameForm extends Component {
 							/>
 						</Col>
 					</FormGroup>
+					<Navbar>
+						<Navbar.Text>
+							<strong>Antecedentes Patológicos</strong>
+						</Navbar.Text>
+					</Navbar>
 					<FormGroup controlId="antecedentesPatologicos">
-						<strong>Antecedentes Patológicos</strong>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p1}</ControlLabel>
+						<FormControl
 							id="firstQuestionPat"
-							label={preguntas.p1}
+							label={questions.p1}
+							value={this.state.firstQuestionPat}
+							componentClass="textarea"
+							onChange={e =>
+								this.setState({ firstQuestionPat: e.target.value })
+							}
 							placeholder="Escribe tu Respuesta..."
 						/>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p2}</ControlLabel>
+						<FormControl
 							id="secondQuestionPat"
-							label={preguntas.p2}
+							label={questions.p2}
+							value={this.state.secondQuestionPat}
+							componentClass="textarea"
+							onChange={e =>
+								this.setState({ secondQuestionPat: e.target.value })
+							}
 							placeholder="Escribe tu Respuesta..."
 						/>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p3}</ControlLabel>
+						<FormControl
 							id="thirdQuestionPat"
-							label={preguntas.p3}
+							label={questions.p3}
+							value={this.state.thirdQuestionPat}
+							componentClass="textarea"
+							onChange={e =>
+								this.setState({ thirdQuestionPat: e.target.value })
+							}
 							placeholder="Escribe tu Respuesta..."
 						/>
 					</FormGroup>
+					<Navbar>
+						<Navbar.Text>
+							<strong>Antecedentes No Patológicos</strong>
+						</Navbar.Text>
+					</Navbar>
 					<FormGroup controlId="antecedentesNoPatologicos">
-						<strong>Antecedentes No Patológicos</strong>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p4}</ControlLabel>
+						<FormControl
 							id="firstQuestionNp"
-							label={preguntas.p4}
+							label={questions.p4}
+							value={this.state.firstQuestionNp}
+							componentClass="textarea"
+							onChange={e => this.setState({ firstQuestionNp: e.target.value })}
 							placeholder="Escribe tu Respuesta..."
 						/>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p5}</ControlLabel>
+						<FormControl
 							id="secondQuestionNp"
-							label={preguntas.p5}
+							label={questions.p5}
+							value={this.state.secondQuestionNp}
+							componentClass="textarea"
+							onChange={e =>
+								this.setState({ secondQuestionNp: e.target.value })
+							}
 							placeholder="Escribe tu Respuesta..."
 						/>
-						<PreguntaAbierta
+						<ControlLabel>{questions.p6}</ControlLabel>
+						<FormControl
 							id="thirdQuestionNp"
-							label={preguntas.p6}
+							label={questions.p6}
+							value={this.state.thirdQuestionNp}
+							componentClass="textarea"
+							onChange={e => this.setState({ thirdQuestionNp: e.target.value })}
 							placeholder="Escribe tu Respuesta..."
 						/>
 					</FormGroup>
