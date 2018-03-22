@@ -83,7 +83,7 @@ class NameForm extends Component {
 		const length = value.length;
 		if (length > 0 && length <= 5) return "warning";
 		else if (length > 5) return "success";
-		else if (length === 0) return "error";
+		else if (length > 0) return "error";
 		return null;
 	}
 
