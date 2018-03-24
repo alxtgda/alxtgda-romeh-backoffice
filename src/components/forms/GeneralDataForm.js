@@ -2,13 +2,15 @@ import React, { Component } from "react";
 
 import {
 	ControlLabel,
+	Checkbox,
 	Form,
 	PageHeader,
 	FormGroup,
 	FormControl,
 	Col,
 	Button,
-	Navbar
+	Navbar,
+	Table
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
 import MaskedFormControl from "react-bootstrap-maskedinput";
@@ -45,7 +47,23 @@ class NameForm extends Component {
 			thirdQuestionPat: "",
 			firstQuestionNp: "",
 			secondQuestionNp: "",
-			thirdQuestionNp: ""
+			thirdQuestionNp: "",
+			sobrepesoPadre: false,
+			sobrepesoMadre: false,
+			sobrepesoHermanos: false,
+			sobrepesoAbuelos: false,
+			diabetesPadre: false,
+			diabetesMadre: false,
+			diabetesHermanos: false,
+			diabetesAbuelos: false,
+			hipertensPadre: false,
+			hipertensMadre: false,
+			hipertensHermanos: false,
+			hipertensAbuelos: false,
+			cardioPadre: false,
+			cardioMadre: false,
+			cardioHermanos: false,
+			cardioAbuelos: false
 		};
 	}
 	handleSubmit = e => {
@@ -78,6 +96,22 @@ class NameForm extends Component {
 			selectUsrAge: " ",
 			cellNumber: "",
 			inputTerms: false,
+			sobrepesoPadre: false,
+			sobrepesoMadre: false,
+			sobrepesoHermanos: false,
+			sobrepesoAbuelos: false,
+			diabetesPadre: false,
+			diabetesMadre: false,
+			diabetesHermanos: false,
+			diabetesAbuelos: false,
+			hipertensPadre: false,
+			hipertensMadre: false,
+			hipertensHermanos: false,
+			hipertensAbuelos: false,
+			cardioPadre: false,
+			cardioMadre: false,
+			cardioHermanos: false,
+			cardioAbuelos: false,
 			firstQuestionPat: "",
 			secondQuestionPat: "",
 			thirdQuestionPat: "",
@@ -93,9 +127,9 @@ class NameForm extends Component {
 		}
 	}
 	onChange = e => {
-		this.setState({
-			inputTerms: e.target.checked
-		});
+		const state = this.state;
+		state[e.target.name] = e.target.checked;
+		this.setState(state);
 	};
 	getValidationState(value) {
 		const length = value.length;
@@ -106,6 +140,24 @@ class NameForm extends Component {
 	}
 
 	render() {
+		const {
+			sobrepesoPadre,
+			sobrepesoMadre,
+			sobrepesoHermanos,
+			sobrepesoAbuelos,
+			diabetesPadre,
+			diabetesMadre,
+			diabetesHermanos,
+			diabetesAbuelos,
+			hipertensPadre,
+			hipertensMadre,
+			hipertensHermanos,
+			hipertensAbuelos,
+			cardioPadre,
+			cardioMadre,
+			cardioHermanos,
+			cardioAbuelos
+		} = this.state;
 		return (
 			<div>
 				<PageHeader className="App-header">
@@ -274,6 +326,160 @@ class NameForm extends Component {
 								onChange={e => this.setState({ cellNumber: e.target.value })}
 							/>
 						</Col>
+					</FormGroup>
+
+					<FormGroup>
+						<Table responsive hover striped bordered>
+							<thead>
+								<th>Antecedentes Heredo Familiares</th>
+								<th>Padre</th>
+								<th>Madre</th>
+								<th>Hermanos</th>
+								<th>Abuelos</th>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Sobrepeso</th>
+									<td>
+										<Checkbox
+											name="sobrepesoPadre"
+											value={sobrepesoPadre}
+											onChange={this.onChange}
+											checked={sobrepesoPadre}
+										/>
+									</td>
+									<td>
+										<Checkbox
+											name="sobrepesoMadre"
+											value={sobrepesoMadre}
+											onChange={this.onChange}
+											checked={sobrepesoMadre}
+										/>
+									</td>
+									<td>
+										<Checkbox
+											name="sobrepesoHermanos"
+											value={sobrepesoHermanos}
+											onChange={this.onChange}
+											checked={sobrepesoHermanos}
+										/>
+									</td>
+									<td>
+										<Checkbox
+											name="sobrepesoAbuelos"
+											value={sobrepesoAbuelos}
+											onChange={this.onChange}
+											checked={sobrepesoAbuelos}
+										/>
+									</td>
+								</tr>
+								<tr>
+									<th>Diabetes</th>
+									<th>
+										<Checkbox
+											name="diabetesPadre"
+											value={diabetesPadre}
+											onChange={this.onChange}
+											checked={diabetesPadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="diabetesMadre"
+											value={diabetesMadre}
+											onChange={this.onChange}
+											checked={diabetesMadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="diabetesHermanos"
+											value={diabetesHermanos}
+											onChange={this.onChange}
+											checked={diabetesHermanos}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="diabetesAbuelos"
+											value={diabetesAbuelos}
+											onChange={this.onChange}
+											checked={diabetesAbuelos}
+										/>
+									</th>
+								</tr>
+								<tr>
+									<th>Hipertensión</th>
+									<th>
+										<Checkbox
+											name="hipertensPadre"
+											value={hipertensPadre}
+											onChange={this.onChange}
+											checked={hipertensPadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="hipertensMadre"
+											value={hipertensMadre}
+											onChange={this.onChange}
+											checked={hipertensMadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="hipertensHermanos"
+											value={hipertensHermanos}
+											onChange={this.onChange}
+											checked={hipertensHermanos}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="hipertensAbuelos"
+											value={hipertensAbuelos}
+											onChange={this.onChange}
+											checked={hipertensAbuelos}
+										/>
+									</th>
+								</tr>
+								<tr>
+									<th>Enfermedades Cardiovasculares</th>
+									<th>
+										<Checkbox
+											name="cardioPadre"
+											value={cardioPadre}
+											onChange={this.onChange}
+											checked={cardioPadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="cardioMadre"
+											value={cardioMadre}
+											onChange={this.onChange}
+											checked={cardioMadre}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="cardioHermanos"
+											value={cardioHermanos}
+											onChange={this.onChange}
+											checked={cardioHermanos}
+										/>
+									</th>
+									<th>
+										<Checkbox
+											name="cardioAbuelos"
+											value={cardioAbuelos}
+											onChange={this.onChange}
+											checked={cardioAbuelos}
+										/>
+									</th>
+								</tr>
+							</tbody>
+						</Table>
 					</FormGroup>
 
 					<FormGroup>
