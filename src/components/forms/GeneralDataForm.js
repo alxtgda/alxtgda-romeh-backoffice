@@ -9,7 +9,7 @@ import {
 	FormControl,
 	Col,
 	Button,
-	Navbar,
+	Panel,
 	Table
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
@@ -107,7 +107,7 @@ class NameForm extends Component {
 			inputEmailAddress: "",
 			inputUsrProf: "",
 			inputUsrJob: "",
-			selectUsrAge: " ",
+			selectUsrAge: "",
 			cellNumber: "",
 			sobrepesoPadre: false,
 			sobrepesoMadre: false,
@@ -130,7 +130,7 @@ class NameForm extends Component {
 			thirdQuestionPat: "",
 			firstQuestionNp: "",
 			secondQuestionNp: "",
-			thirdQuestionNP: ""
+			thirdQuestionNp: ""
 		});
 		alert("Datos Guardados..");
 	};
@@ -235,7 +235,7 @@ class NameForm extends Component {
 								value={this.state.value}
 								onChange={e => this.setState({ selectUsrAge: e.target.value })}
 							>
-								<option selected value=" ">
+								<option default value=" ">
 									Selecciona tu Edad..
 								</option>
 								<option value="10">10</option>
@@ -345,11 +345,13 @@ class NameForm extends Component {
 					<FormGroup>
 						<Table responsive hover striped bordered>
 							<thead>
-								<th>Antecedentes Heredo Familiares</th>
-								<th>Padre</th>
-								<th>Madre</th>
-								<th>Hermanos</th>
-								<th>Abuelos</th>
+								<tr>
+									<th>Antecedentes Heredo Familiares</th>
+									<th>Padre</th>
+									<th>Madre</th>
+									<th>Hermanos</th>
+									<th>Abuelos</th>
+								</tr>
 							</thead>
 							<tbody>
 								<tr>
@@ -495,83 +497,96 @@ class NameForm extends Component {
 							</tbody>
 						</Table>
 					</FormGroup>
+					<Panel bsStyle="primary">
+						<Panel.Heading>
+							<Panel.Title componentClass="h3">
+								Antecedentes Patológicos
+							</Panel.Title>
+						</Panel.Heading>
+						<Panel.Body>
+							<FormGroup controlId="antecedentesPatologicos">
+								<ControlLabel>{questions.p1}</ControlLabel>
+								<FormControl
+									id="firstQuestionPat"
+									label={questions.p1}
+									value={this.state.firstQuestionPat}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ firstQuestionPat: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
 
-					<Navbar>
-						<Navbar.Text>
-							<strong>Antecedentes Patológicos</strong>
-						</Navbar.Text>
-					</Navbar>
-					<FormGroup controlId="antecedentesPatologicos">
-						<ControlLabel>{questions.p1}</ControlLabel>
-						<FormControl
-							id="firstQuestionPat"
-							label={questions.p1}
-							value={this.state.firstQuestionPat}
-							componentClass="textarea"
-							onChange={e =>
-								this.setState({ firstQuestionPat: e.target.value })
-							}
-							placeholder="Escribe tu Respuesta..."
-						/>
-						<ControlLabel>{questions.p2}</ControlLabel>
-						<FormControl
-							id="secondQuestionPat"
-							label={questions.p2}
-							value={this.state.secondQuestionPat}
-							componentClass="textarea"
-							onChange={e =>
-								this.setState({ secondQuestionPat: e.target.value })
-							}
-							placeholder="Escribe tu Respuesta..."
-						/>
-						<ControlLabel>{questions.p3}</ControlLabel>
-						<FormControl
-							id="thirdQuestionPat"
-							label={questions.p3}
-							value={this.state.thirdQuestionPat}
-							componentClass="textarea"
-							onChange={e =>
-								this.setState({ thirdQuestionPat: e.target.value })
-							}
-							placeholder="Escribe tu Respuesta..."
-						/>
-					</FormGroup>
-					<Navbar>
-						<Navbar.Text>
-							<strong>Antecedentes No Patológicos</strong>
-						</Navbar.Text>
-					</Navbar>
-					<FormGroup controlId="antecedentesNoPatologicos">
-						<ControlLabel>{questions.p4}</ControlLabel>
-						<FormControl
-							id="firstQuestionNp"
-							label={questions.p4}
-							value={this.state.firstQuestionNp}
-							componentClass="textarea"
-							onChange={e => this.setState({ firstQuestionNp: e.target.value })}
-							placeholder="Escribe tu Respuesta..."
-						/>
-						<ControlLabel>{questions.p5}</ControlLabel>
-						<FormControl
-							id="secondQuestionNp"
-							label={questions.p5}
-							value={this.state.secondQuestionNp}
-							componentClass="textarea"
-							onChange={e =>
-								this.setState({ secondQuestionNp: e.target.value })
-							}
-							placeholder="Escribe tu Respuesta..."
-						/>
-						<ControlLabel>{questions.p6}</ControlLabel>
-						<FormControl
-							id="thirdQuestionNp"
-							label={questions.p6}
-							value={this.state.thirdQuestionNp}
-							componentClass="textarea"
-							onChange={e => this.setState({ thirdQuestionNp: e.target.value })}
-							placeholder="Escribe tu Respuesta..."
-						/>
-					</FormGroup>
+								<ControlLabel>{questions.p2}</ControlLabel>
+								<FormControl
+									id="secondQuestionPat"
+									label={questions.p2}
+									value={this.state.secondQuestionPat}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ secondQuestionPat: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
+								<ControlLabel>{questions.p3}</ControlLabel>
+								<FormControl
+									id="thirdQuestionPat"
+									label={questions.p3}
+									value={this.state.thirdQuestionPat}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ thirdQuestionPat: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
+							</FormGroup>
+						</Panel.Body>
+					</Panel>
+
+					<Panel bsStyle="info">
+						<Panel.Heading>
+							<Panel.Title componentClass="h3">
+								Antecedentes No Patológicos
+							</Panel.Title>
+						</Panel.Heading>
+						<Panel.Body>
+							<FormGroup controlId="antecedentesNoPatologicos">
+								<ControlLabel>{questions.p4}</ControlLabel>
+								<FormControl
+									id="firstQuestionNp"
+									label={questions.p4}
+									value={this.state.firstQuestionNp}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ firstQuestionNp: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
+								<ControlLabel>{questions.p5}</ControlLabel>
+								<FormControl
+									id="secondQuestionNp"
+									label={questions.p5}
+									value={this.state.secondQuestionNp}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ secondQuestionNp: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
+								<ControlLabel>{questions.p6}</ControlLabel>
+								<FormControl
+									id="thirdQuestionNp"
+									label={questions.p6}
+									value={this.state.thirdQuestionNp}
+									componentClass="textarea"
+									onChange={e =>
+										this.setState({ thirdQuestionNp: e.target.value })
+									}
+									placeholder="Escribe tu Respuesta..."
+								/>
+							</FormGroup>
+						</Panel.Body>
+					</Panel>
 
 					<FormGroup>
 						<Col smOffset={1} sm={10}>
