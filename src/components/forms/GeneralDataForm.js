@@ -41,7 +41,6 @@ class NameForm extends Component {
 			inputUsrJob: "",
 			selectUsrAge: "",
 			cellNumber: "",
-			inputTerms: false,
 			firstQuestionPat: "",
 			secondQuestionPat: "",
 			thirdQuestionPat: "",
@@ -78,7 +77,22 @@ class NameForm extends Component {
 			usrJob: this.state.inputUsrJob,
 			usrAge: this.state.selectUsrAge,
 			cellNumber: this.state.cellNumber,
-			accTerms: this.state.inputTerms,
+			sobrepesoPadre: this.state.sobrepesoPadre,
+			sobrepesoMadre: this.state.sobrepesoMadre,
+			sobrepesoHermanos: this.state.sobrepesoHermanos,
+			sobrepesoAbuelos: this.state.sobrepesoAbuelos,
+			diabetesPadre: this.state.diabetesPadre,
+			diabetesMadre: this.state.diabetesMadre,
+			diabetesHermanos: this.state.diabetesHermanos,
+			diabetesAbuelos: this.state.diabetesAbuelos,
+			hipertensPadre: this.state.hipertensPadre,
+			hipertensMadre: this.state.hipertensMadre,
+			hipertensHermanos: this.state.hipertensHermanos,
+			hipertensAbuelos: this.state.hipertensAbuelos,
+			cardioPadre: this.state.cardioPadre,
+			cardioMadre: this.state.cardioMadre,
+			cardioHermanos: this.state.cardioHermanos,
+			cardioAbuelos: this.state.cardioAbuelos,
 			firstQuestionPat: this.state.firstQuestionPat,
 			secondQuestionPat: this.state.secondQuestionPat,
 			thirdQuestionPat: this.state.thirdQuestionPat,
@@ -95,7 +109,6 @@ class NameForm extends Component {
 			inputUsrJob: "",
 			selectUsrAge: " ",
 			cellNumber: "",
-			inputTerms: false,
 			sobrepesoPadre: false,
 			sobrepesoMadre: false,
 			sobrepesoHermanos: false,
@@ -158,6 +171,7 @@ class NameForm extends Component {
 			cardioHermanos,
 			cardioAbuelos
 		} = this.state;
+
 		return (
 			<div>
 				<PageHeader className="App-header">
@@ -482,20 +496,6 @@ class NameForm extends Component {
 						</Table>
 					</FormGroup>
 
-					<FormGroup>
-						<Col componentClass="AccTerms" sm={2}>
-							Acepto Términos y Condiciones..
-						</Col>
-						<Col sm={2}>
-							<FormControl
-								id="AccTerms"
-								type="checkbox"
-								onChange={this.onChange}
-								checked={this.state.inputTerms}
-								value={this.state.inputTerms}
-							/>
-						</Col>
-					</FormGroup>
 					<Navbar>
 						<Navbar.Text>
 							<strong>Antecedentes Patológicos</strong>
