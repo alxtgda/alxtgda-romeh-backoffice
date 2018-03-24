@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import GeneralDataForm from "./GeneralDataForm";
-import HeredoFamForm from "./HeredoFamForm";
 import firebase from "firebase";
 
 var config = {
@@ -17,12 +16,7 @@ class FormContainer extends Component {
 	render() {
 		return (
 			<div>
-				<div>
-					<GeneralDataForm db={firebase} />
-				</div>
-				<div>
-					<HeredoFamForm />
-				</div>
+				<GeneralDataForm db={firebase} />
 			</div>
 		);
 	}
