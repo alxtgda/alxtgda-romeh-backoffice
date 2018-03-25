@@ -62,7 +62,14 @@ class NameForm extends Component {
 			cardioPadre: false,
 			cardioMadre: false,
 			cardioHermanos: false,
-			cardioAbuelos: false
+			cardioAbuelos: false,
+			day1Meal01: "",
+			day1Meal02: "",
+			day1Meal03: "",
+			day1Meal04: "",
+			day1Meal05: "",
+			day1Meal06: "",
+			day1Meal07: ""
 		};
 	}
 	handleSubmit = e => {
@@ -98,7 +105,14 @@ class NameForm extends Component {
 			thirdQuestionPat: this.state.thirdQuestionPat,
 			firstQuestionNp: this.state.firstQuestionNp,
 			secondQuestionNp: this.state.secondQuestionNp,
-			thirdQuestionNp: this.state.thirdQuestionNp
+			thirdQuestionNp: this.state.thirdQuestionNp,
+			day1Meal01: this.state.day1Meal01,
+			day1Meal02: this.state.day1Meal02,
+			day1Meal03: this.state.day1Meal03,
+			day1Meal04: this.state.day1Meal04,
+			day1Meal05: this.state.day1Meal05,
+			day1Meal06: this.state.day1Meal06,
+			day1Meal07: this.state.day1Meal07
 		});
 		this.setState({
 			inputName: "",
@@ -130,7 +144,14 @@ class NameForm extends Component {
 			thirdQuestionPat: "",
 			firstQuestionNp: "",
 			secondQuestionNp: "",
-			thirdQuestionNp: ""
+			thirdQuestionNp: "",
+			day1Meal01: "",
+			day1Meal02: "",
+			day1Meal03: "",
+			day1Meal04: "",
+			day1Meal05: "",
+			day1Meal06: "",
+			day1Meal07: ""
 		});
 		alert("Datos Guardados..");
 	};
@@ -178,7 +199,7 @@ class NameForm extends Component {
 					ROMEH <small>Datos Generales</small>
 				</PageHeader>
 
-				<SectionHeader />
+				<SectionHeader section="section1" />
 
 				<Form
 					horizontal
@@ -508,6 +529,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p1}</ControlLabel>
 								<FormControl
 									id="firstQuestionPat"
+									style={{ border: "none" }}
 									label={questions.p1}
 									value={this.state.firstQuestionPat}
 									componentClass="textarea"
@@ -520,6 +542,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p2}</ControlLabel>
 								<FormControl
 									id="secondQuestionPat"
+									style={{ border: "none" }}
 									label={questions.p2}
 									value={this.state.secondQuestionPat}
 									componentClass="textarea"
@@ -531,6 +554,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p3}</ControlLabel>
 								<FormControl
 									id="thirdQuestionPat"
+									style={{ border: "none" }}
 									label={questions.p3}
 									value={this.state.thirdQuestionPat}
 									componentClass="textarea"
@@ -554,6 +578,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p4}</ControlLabel>
 								<FormControl
 									id="firstQuestionNp"
+									style={{ border: "none" }}
 									label={questions.p4}
 									value={this.state.firstQuestionNp}
 									componentClass="textarea"
@@ -565,6 +590,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p5}</ControlLabel>
 								<FormControl
 									id="secondQuestionNp"
+									style={{ border: "none" }}
 									label={questions.p5}
 									value={this.state.secondQuestionNp}
 									componentClass="textarea"
@@ -576,6 +602,7 @@ class NameForm extends Component {
 								<ControlLabel>{questions.p6}</ControlLabel>
 								<FormControl
 									id="thirdQuestionNp"
+									style={{ border: "none" }}
 									label={questions.p6}
 									value={this.state.thirdQuestionNp}
 									componentClass="textarea"
@@ -587,6 +614,136 @@ class NameForm extends Component {
 							</FormGroup>
 						</Panel.Body>
 					</Panel>
+					<div>
+						<strong>Recordatorio de 48 horas</strong>
+						<SectionHeader section="section2" />
+						<FormGroup>
+							<Table responsive hover striped bordered>
+								<thead>
+									<tr>
+										<th>COMIDA Y HORARIO</th>
+										<th>PLATILLO</th>
+										<th>INGREDIENTES Y CANTIDADES</th>
+										<th>BEBIDAS INGERIDAS Y CANTIDAD</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal01"
+												style={{ border: "none" }}
+												value={this.state.day1Meal01}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal01: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal02"
+												style={{ border: "none" }}
+												value={this.state.day1Meal02}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal02: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal03"
+												style={{ border: "none" }}
+												value={this.state.day1Meal03}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal03: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal04"
+												style={{ border: "none" }}
+												value={this.state.day1Meal04}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal04: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal05"
+												style={{ border: "none" }}
+												value={this.state.day1Meal05}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal05: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal06"
+												style={{ border: "none" }}
+												value={this.state.day1Meal06}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal06: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+									<tr>
+										<td>
+											<FormControl
+												id="day1Meal07"
+												style={{ border: "none" }}
+												value={this.state.day1Meal07}
+												componentClass="textarea"
+												onChange={e =>
+													this.setState({ day1Meal07: e.target.value })
+												}
+											/>
+										</td>
+										<td />
+										<td />
+										<td />
+									</tr>
+								</tbody>
+							</Table>
+						</FormGroup>
+					</div>
 
 					<FormGroup>
 						<Col smOffset={1} sm={10}>
