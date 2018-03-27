@@ -10,6 +10,7 @@ import {
 	Col,
 	Button,
 	Panel,
+	Radio,
 	Table
 } from "react-bootstrap";
 import SectionHeader from "../elements/SectionHeader";
@@ -27,7 +28,9 @@ const questions = {
 	p5:
 		"¿Acostumbra tomar bebidas alcohólicas? En caso de ser su respuesta afirmativa mencionar cantidad a la semana.",
 	p6:
-		"¿Has usado o usas cualquier tipo de suplementos alimenticios (ejemplo: vitaminas,omega3, proteína, aminoácidos, etc.)?"
+		"¿Has usado o usas cualquier tipo de suplementos alimenticios (ejemplo: vitaminas,omega3, proteína, aminoácidos, etc.)?",
+	p7:
+		"¿Tienes alergia a algún alimento o tienes dificultad de conseguir alguno en tu localidad?"
 };
 class NameForm extends Component {
 	constructor(props) {
@@ -118,7 +121,11 @@ class NameForm extends Component {
 			day2Drink04: "",
 			day2Drink05: "",
 			day2Drink06: "",
-			day2Drink07: ""
+			day2Drink07: "",
+			prefAlim: "",
+			foodIDontLike: "",
+			foodILike: "",
+			feedingType: ""
 		};
 	}
 	handleSubmit = e => {
@@ -210,7 +217,11 @@ class NameForm extends Component {
 			day2Drink04: this.state.day2Drink04,
 			day2Drink05: this.state.day2Drink05,
 			day2Drink06: this.state.day2Drink06,
-			day2Drink07: this.state.day2Drink07
+			day2Drink07: this.state.day2Drink07,
+			prefAlim: this.state.prefAlim,
+			foodIDontLike: this.state.foodIDontLike,
+			foodILike: this.state.foodILike,
+			feedingType: this.state.feedingType
 		});
 		this.setState({
 			inputName: "",
@@ -298,7 +309,10 @@ class NameForm extends Component {
 			day2Drink04: "",
 			day2Drink05: "",
 			day2Drink06: "",
-			day2Drink07: ""
+			day2Drink07: "",
+			prefAlim: "",
+			foodIDontLike: "",
+			foodILike: ""
 		});
 		alert("Datos Guardados..");
 	};
@@ -1442,6 +1456,88 @@ class NameForm extends Component {
 						</FormGroup>
 					</div>
 
+					<strong>Preferencias Alimentarias</strong>
+					<FormGroup controlId="preferenciasAlimentarias">
+						<ControlLabel>{questions.p7}</ControlLabel>
+						<FormControl
+							id="prefAlim"
+							label={questions.p7}
+							value={this.state.prefAlim}
+							componentClass="textarea"
+							onChange={e => this.setState({ prefAlim: e.target.value })}
+							placeholder="Escribe tu Respuesta..."
+						/>
+					</FormGroup>
+					<strong>
+						Menciona los alimentos que no te agradan o que desearías no comer
+						durante el plan de alimentación.
+					</strong>
+					<FormGroup>
+						<Table responsive hover striped bordered>
+							<thead>
+								<tr>
+									<th>ALIMENTOS QUE ME DESAGRADAN</th>
+									<th>ALIMENTOS QUE ME AGRADAN</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<FormControl
+											id="foodIDontLike"
+											value={this.state.foodIDontLike}
+											componentClass="textarea"
+											onChange={e =>
+												this.setState({ foodIDontLike: e.target.value })
+											}
+										/>
+									</td>
+									<td>
+										<FormControl
+											id="foodILike"
+											value={this.state.foodILike}
+											componentClass="textarea"
+											onChange={e =>
+												this.setState({ foodILike: e.target.value })
+											}
+										/>
+									</td>
+								</tr>
+							</tbody>
+						</Table>
+					</FormGroup>
+					<strong>
+						Marca la opción correspondiente a la alimentación que llevas.
+					</strong>
+					<FormGroup>
+						<Radio
+							name="feedingType"
+							value="Ovnívora"
+							checked={this.state.feedingType === "Ovnívora"}
+							onChange={e => this.setState({ feedingType: e.target.value })}
+							inline
+						>
+							OMNÍVORA
+						</Radio>
+						<Radio
+							name="feedingType"
+							value="Vegetariana"
+							checked={this.state.feedingType === "Vegetariana"}
+							onChange={e => this.setState({ feedingType: e.target.value })}
+							inline
+						>
+							VEGETARIANA
+						</Radio>
+						<Radio
+							name="feedingType"
+							value="Vegana"
+							checked={this.state.feedingType === "Vegana"}
+							onChange={e => this.setState({ feedingType: e.target.value })}
+							inline
+						>
+							VEGANA
+						</Radio>
+					</FormGroup>
 					<FormGroup>
 						<Col smOffset={1} sm={10}>
 							<Button type="submit" bsStyle="primary">
